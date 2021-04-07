@@ -1,0 +1,19 @@
+
+public class Demo {
+
+	
+	void get1(int cid,String cname)
+	{
+		
+	}
+	void get2(int empid,String empname)
+	{
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

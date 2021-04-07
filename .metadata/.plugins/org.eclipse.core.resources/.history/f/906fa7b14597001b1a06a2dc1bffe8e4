@@ -1,0 +1,23 @@
+class Demo
+{
+	int empid,salary;
+	String empname;
+	void input()
+	{
+		
+	}
+	void display()
+	{
+		
+	}
+}
+
+
+public class Sample {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

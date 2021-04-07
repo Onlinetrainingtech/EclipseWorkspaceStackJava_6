@@ -1,0 +1,2 @@
+# EclipseWorkspaceStackJava_6
+ 

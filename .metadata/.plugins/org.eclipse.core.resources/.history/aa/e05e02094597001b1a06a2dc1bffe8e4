@@ -1,0 +1,19 @@
+
+public class Demo {
+
+	
+	void get1(int cid,String cname)
+	{
+		System.out.println("Get1 function is::"+cid+""+cname);
+	}
+	void get2(int empid,String empname)
+	{
+		System.out.println("Get2 function is::"+empid+""+empname);
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
