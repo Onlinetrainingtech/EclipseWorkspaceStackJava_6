@@ -7,6 +7,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class HomePage extends JFrame {
 
@@ -45,6 +47,12 @@ public class HomePage extends JFrame {
 		contentPane.add(lblHrSystem);
 		
 		JButton btnAdminlogin = new JButton("AdminLogin");
+		btnAdminlogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0)
+			{
+				new AdminLogin().setVisible(true);
+			}
+		});
 		btnAdminlogin.setBounds(113, 68, 186, 23);
 		contentPane.add(btnAdminlogin);
 		
@@ -53,6 +61,12 @@ public class HomePage extends JFrame {
 		contentPane.add(btnRegister);
 		
 		JButton btnUserlogin = new JButton("UserLogin");
+		btnUserlogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				new UserLogin().setVisible(true);
+			}
+		});
 		btnUserlogin.setBounds(113, 206, 186, 23);
 		contentPane.add(btnUserlogin);
 	}

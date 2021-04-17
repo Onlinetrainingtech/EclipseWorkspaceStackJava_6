@@ -5,8 +5,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.awt.event.ActionEvent;
 
 public class AdminLogin extends JFrame {
 
@@ -64,6 +72,40 @@ public class AdminLogin extends JFrame {
 		textField_1.setColumns(10);
 		
 		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					String uname=textField.getText();
+					String pass=textField_1.getText();
+					String str1="select * from admin";
+					Class.forName("org.h2.Driver");
+					Connection conn=DriverManager.getConnection("jdbc:h2:tcp://localhost/~/fullstackbatch6","sa","");
+					Statement stmt=conn.createStatement();
+					ResultSet rs=stmt.executeQuery(str1);
+					rs.next();
+					String u1=rs.getString(1);
+					String p1=rs.getString(2);
+					//System.out.println(""+u1+""+p1);
+					//System.out.println(""+uname+""+pass);
+					if(uname.equals(u1)&&pass.equals(p1))
+					{
+						
+						JOptionPane.showMessageDialog(btnLogin,"LoginSucess!!!");
+						new AdminHomePage().setVisible(true);
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(btnLogin, "LoginFail");
+					}
+				}
+				catch(Exception t)
+				{
+					
+				}
+			}
+		});
 		btnLogin.setBounds(83, 195, 89, 23);
 		contentPane.add(btnLogin);
 		
