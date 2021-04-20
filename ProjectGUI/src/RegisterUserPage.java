@@ -5,8 +5,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.awt.event.ActionEvent;
 
 public class RegisterUserPage extends JFrame {
 
@@ -84,10 +90,45 @@ public class RegisterUserPage extends JFrame {
 		textField_3.setColumns(10);
 		
 		JButton btnRegister = new JButton("Register");
+		btnRegister.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try
+				{
+					String u1=textField.getText();
+					String p1=textField_1.getText();
+					String e1=textField_2.getText();
+					String g1=textField_3.getText();
+					
+					String str1="insert into userreg values('"+u1+"','"+p1+"','"+e1+"','"+g1+"')";
+					
+					Class.forName("org.h2.Driver");
+					Connection conn=DriverManager.getConnection("jdbc:h2:tcp://localhost/~/fullstackbatch6","sa","");
+					Statement stmt=conn.createStatement();
+					
+					stmt.executeUpdate(str1);
+					
+					JOptionPane.showMessageDialog(btnRegister,"Insereted..");
+				}
+				catch(Exception t)
+				{
+					System.out.println(t);
+				}
+			}
+		});
 		btnRegister.setBounds(82, 284, 89, 23);
 		contentPane.add(btnRegister);
 		
 		JButton btnReset = new JButton("Reset");
+		btnReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				textField.setText("");
+				textField_1.setText("");
+				textField_2.setText("");
+				textField_3.setText("");
+			}
+		});
 		btnReset.setBounds(224, 284, 89, 23);
 		contentPane.add(btnReset);
 	}
